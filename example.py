@@ -14,10 +14,10 @@ from keras.models import Sequential
 from keras.layers import Dense
 from psokeras import Optimizer
 
-N = 30 # number of particles
-STEPS = 300 # number of steps
-LOSS = 'mse' # Loss function
-BATCH_SIZE = 32 # Size of batches to train on
+N = 2 # number of particles
+STEPS = 20 # number of steps
+LOSS = 'mean_squared_error' # Loss function
+BATCH_SIZE = 8 # Size of batches to train on
 
 
 def build_model(loss):
@@ -48,7 +48,7 @@ def vanilla_backpropagation(x_train, y_train):
     best_model = None
     best_score = 100.0
 
-    for i in range(N):
+    for _ in range(N):
         model_s = build_model(LOSS)
         model_s.fit(x_train, y_train,
                     epochs=STEPS,
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                                                         stratify=iris.target)
 
     # Section II: First run the backpropagation simulation
-    model_s = vanilla_backpropagation()
+    model_s = vanilla_backpropagation(x_train=x_train,y_train=y_train)
 
     b_train_score = model_s.evaluate(x_train, y_train, batch_size=BATCH_SIZE, verbose=0)
     b_test_score = model_s.evaluate(x_test, y_test, batch_size=BATCH_SIZE, verbose=0)

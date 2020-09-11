@@ -65,5 +65,5 @@ class Optimizer:
     def get_best_model(self):
         best_model = keras.models.model_from_json(self.structure)
         best_model.set_weights(self.global_best_weights)
-        best_model.compile(loss=self.loss,optimizer=self.loss)
+        best_model.compile(loss=self.loss,optimizer='sgd')
         return best_model
