@@ -20,7 +20,7 @@ class Particle:
         self.best_score = BIG_SCORE
 
     def get_score(self, x, y, update=True):
-        local_score = self.model.evaluate(x, y, verbose=1,epochs=10, steps_per_epoch=128)
+        local_score = self.model.evaluate(x, y, verbose=2)
         if local_score < self.best_score and update:
             self.best_score = local_score
             self.best_weights = self.model.get_weights()
