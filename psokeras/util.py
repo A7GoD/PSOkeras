@@ -25,7 +25,5 @@ class ProgressBar:
         print(bar)
 
     def _make_bar(self, x):
-        bar = "["
-            print(x+"/"+ self.updates)
-        bar += "]"
+        print("Progress",x+"/"+ self.updates)
         return bar
