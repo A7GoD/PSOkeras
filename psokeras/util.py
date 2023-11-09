@@ -4,18 +4,20 @@ class ProgressBar:
         self.step_size = (steps // updates)
         self.total_steps = steps
         self.updates = updates
-
+        print(self.step_size)
         bar = self._make_bar(0)
-        print(bar, end=' ')
+        print(bar)
 
     def update(self, i):
+        print('i',i)
+        print('step_size', self.step_size)
         if i % self.step_size > 0:
             return
 
         self.step = i // self.step_size
         bar = self._make_bar(i)
 
-        print(bar, end=' ')
+        print(bar)
 
     def done(self):
         self.step = self.total_steps
@@ -24,8 +26,6 @@ class ProgressBar:
 
     def _make_bar(self, x):
         bar = "["
-        for x in range(self.updates):
-            print("\r", end=' ')
-            bar += "=" if x < self.step else " "
+            print(x+"/"+ self.updates)
         bar += "]"
         return bar
