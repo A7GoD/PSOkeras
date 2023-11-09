@@ -25,5 +25,6 @@ class ProgressBar:
         print(bar)
 
     def _make_bar(self, x):
-        print(f"Progress: {x}/{self.updates}")
+        bar = f"Progress: {x}/{self.updates}"
+        print(bar)
         return bar
